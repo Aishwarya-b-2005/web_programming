@@ -4,14 +4,14 @@ function ques5({ isMorning }) {
   
   export default ques5;
 
-// import Ques5 from "./components/ques5";
-// function App() {
-//   return (
-//     <div>
-//       <Ques5 isMorning={true} />
-//     </div>
-//   );
-// }
+import Ques5 from "./components/ques5";
+function App() {
+  return (
+    <div>
+      <Ques5 isMorning={true} />
+    </div>
+  );
+}
 
-// export default App;
+export default App;
   

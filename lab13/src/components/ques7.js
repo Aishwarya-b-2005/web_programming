@@ -13,16 +13,16 @@ function PrimeChecker({ number }) {
   export default PrimeChecker;
   
 
+APP.JS
+import PrimeChecker from "./components/ques7";
 
-  // import PrimeChecker from "./components/ques7";
-
-  // function App() {
-  //   return (
-  //     <div>
-  //       <PrimeChecker number={7} />
-  //     </div>
-  //   );
-  // }
+  function App() {
+    return (
+      <div>
+        <PrimeChecker number={7} />
+      </div>
+    );
+  }
   
-  // export default App;
+  export default App;
   

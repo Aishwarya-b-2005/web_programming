@@ -1,56 +1,8 @@
-<!-- <html>
-    <head>
-        <title>
-            23BCE1223
-        </title>
-        <script>
-            function board_pass(){
-                name = document.getElementById("name").value;
-                document.getElementById("form").value = name;
-            }
-            window.onload = function(){
-                let firstclass = [0,0,0,0,0];
-                let economy = [0,0,0,0,0];
-                let i = 0;j=0;
-                let input = document.getElementById("input").value;
-                if(input == 1){
-                    if(i==5){
-                        let ques = document.getElementById("ques").value;
-                        if(ques == "yes"){
-                            economy[j++] = 1;
-                        }
-                    }
-                    else{
-                        firstclass[i++] = 1;
-                    }
-                }
-                else if(input == 2){
-                    economy[j++] = 1;
-                }
-            }
-        </script>
-    </head>
-    <body>
-        <label>Enter your name:
-        </label><br>
-        <input type="text" id="name"/><br><br>
-        <label>Enter seat type(1 for firstclass / 2 for economy):</label><br>
-        <input type="text" id="input"/><br><br>
-        <div id="ques"></div>
-
-        <button type="button" id="bill" onclick="board_pass()">Click here to generate boarding pass</button>
-        <form id="form">
-
-        </form>
-    </body>
-</html> -->
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>23BCE1223</title>
     <script>
-        // Global arrays representing seats (0 = available, 1 = taken)
         let seats = new Array(10).fill(0); // 10 seats in total
        
         function assignSeat() {
@@ -69,20 +21,20 @@
                 return;
             }
 
-            // Assign seat based on preference
+            
             if (input === 1) {
-                seatNumber = findSeat(0, 5); // Look for first-class seat (1-5)
+                seatNumber = findSeat(0, 5); 
                 section = "First-Class";
-                if (seatNumber === -1) { // First-class is full
+                if (seatNumber === -1) { 
                     if (confirm("First-Class is full. Would you like an Economy seat instead?")) {
                         seatNumber = findSeat(5, 10);
                         section = "Economy";
                     }
                 }
             } else {
-                seatNumber = findSeat(5, 10); // Look for economy seat (6-10)
+                seatNumber = findSeat(5, 10); 
                 section = "Economy";
-                if (seatNumber === -1) { // Economy is full
+                if (seatNumber === -1) { 
                     if (confirm("Economy is full. Would you like a First-Class seat instead?")) {
                         seatNumber = findSeat(0, 5);
                         section = "First-Class";
@@ -95,10 +47,10 @@
                 return;
             }
 
-            // Mark the seat as taken
+            
             seats[seatNumber] = 1;
 
-            // Display the boarding pass
+            
             document.getElementById("form").innerHTML = `
                 <h3>Boarding Pass</h3>
                 <p><strong>Name:</strong> ${name}</p>
@@ -110,10 +62,10 @@
         function findSeat(start, end) {
             for (let i = start; i < end; i++) {
                 if (seats[i] === 0) {
-                    return i; // Return the first available seat
+                    return i; 
                 }
             }
-            return -1; // No available seats
+            return -1; 
         }
     </script>
 </head>

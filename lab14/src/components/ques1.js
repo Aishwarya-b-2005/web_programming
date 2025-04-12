@@ -24,7 +24,7 @@ const DisplayImages = () => {
 };
 export default DisplayImages;
 
-/*
+
 import DisplayImages from './components/DisplayImages';
 function App() {
     return (
@@ -34,4 +34,3 @@ function App() {
     );
 }
 export default App;
- */

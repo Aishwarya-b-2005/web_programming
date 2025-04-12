@@ -3,7 +3,6 @@ import React from "react";
 function StyledButton() {
     return (
         <div>
-            {/* Internal <style> tag for styling */}
             <style>
                 {`
                     .custom-button {
@@ -23,7 +22,6 @@ function StyledButton() {
                 `}
             </style>
 
-            {/* Button with applied CSS class */}
             <button className="custom-button">Click Me</button>
         </div>
     );

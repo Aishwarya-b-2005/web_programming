@@ -13,15 +13,16 @@ function TemperatureConverter({ celsius, fahrenheit }) {
   
   export default TemperatureConverter;
 
-//   import TemperatureConverter from "./components/TemperatureConverter";
+  App.js
+  import TemperatureConverter from "./components/TemperatureConverter";
 
-// function App() {
-//   return (
-//     <div>
-//       <TemperatureConverter celsius={23} />
-//       <TemperatureConverter fahrenheit={73} />
-//     </div>
-//   );
-// }
+function App() {
+  return (
+    <div>
+      <TemperatureConverter celsius={23} />
+      <TemperatureConverter fahrenheit={73} />
+    </div>
+  );
+}
 
-// export default App;
+export default App;

@@ -7,14 +7,14 @@ function DayDisplay() {
   
   export default DayDisplay;
   
-// import DayDisplay from "./components/ques6";
+import DayDisplay from "./components/ques6";
 
-// function App() {
-//   return (
-//     <div>
-//       <DayDisplay />
-//     </div>
-//   );
-// }
+function App() {
+  return (
+    <div>
+      <DayDisplay />
+    </div>
+  );
+}
 
-// export default App;
+export default App;

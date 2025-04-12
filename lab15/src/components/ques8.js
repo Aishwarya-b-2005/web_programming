@@ -16,7 +16,8 @@ function Form() {
 }
 
 export default Form;
-/*import React from "react";
+
+import React from "react";
 import Form from "./components/ques8"
 function App(){
     return (
@@ -27,4 +28,4 @@ function App(){
     )
 
 }
-export default App; */
+export default App; 

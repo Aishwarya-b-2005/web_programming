@@ -43,7 +43,7 @@ function StateForm() {
 export default StateForm;
 
 
-/*
+
 part 2
 import React, { useRef, useState } from "react";
 
@@ -81,4 +81,4 @@ function RefForm() {
 }
 
 export default RefForm;
- */
+ 

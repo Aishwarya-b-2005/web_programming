@@ -30,15 +30,15 @@ function JokeFetcher() {
 
 export default JokeFetcher;
 
-// import React from "react";
-// import JokeFetcher from "./components/ques7";
-// function App() {
-//   return (
-//     <div>
-//       <h1>Joke App</h1>
-//       <JokeFetcher />
-//     </div>
-//   );
-// }
+import React from "react";
+import JokeFetcher from "./components/ques7";
+function App() {
+  return (
+    <div>
+      <h1>Joke App</h1>
+      <JokeFetcher />
+    </div>
+  );
+}
 
-// export default App;
+export default App;

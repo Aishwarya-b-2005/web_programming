@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+            function calc(){
+                hrs= parseInt(prompt("Enter the hours worked: "));
+                cost_of_mat = parseFloat(prompt("Enter the cost of materials: "));
+                rate =45;
+                cost = rate*hrs;
+                tot_charge = cost+cost_of_mat;
+                alert("Total lobour cost: "+cost);
+                alert("Total charge is: "+tot_charge);
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <h3>Click here to calculate the labour cost and charge</h3><br>
+        <button onclick="calc()">Click here</button>
+    </body>
+</html>

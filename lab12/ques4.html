@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>
+            Graphs
+        </title>
+    </head>
+
+
+    <body>
+        <div id="input">
+            <h2>Click the button to generate charts: </h2>
+            <input type="button" value="Click me" onclick="getinput()"/>
+        </div>
+        <br><br>
+        <div id="myplot" style="width: 600px; height: 400px;"></div>
+    </body>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+    <script>
+            const xArray = ["Italy", "France", "Spain", "USA", "India"];
+            const yArray = [55, 49, 44, 24, 15];
+            const data1 = [
+                {
+                    x: xArray,
+                    y: yArray,
+                    type: 'bar',
+                    name: 'Bar Chart',
+                    orientation: 'v',
+                }
+            ];
+           
+            const layout1 = {
+                xaxis: { title: "Country" },
+                yaxis: { title: "Population" },
+                title:"country and their population",
+            };
+
+
+            const data2 = [
+                {
+                    labels: xArray,
+                    values: yArray,
+                    type: 'pie',
+                    name: 'Pie chart',
+                }
+            ];
+
+
+            const layout2 = {
+                title:"country and their population",
+            };
+
+
+            const data3 = [
+                {
+                    labels: xArray,
+                    values: yArray,
+                    type: 'donut',
+                    name: 'donut chart',
+                    hole: 0.5,
+                }
+            ];
+
+
+            const layout3 = {
+                title:"country and their population",
+            };
+
+            const data4 = [{
+                x: xArray,
+                y: yArray,
+                mode: 'lines+markers',
+                name: 'Line Chart',
+                marker: {
+                    color: ['red', 'green', 'blue', 'yellow', 'purple'], 
+                    size: 10,
+                },
+                line: {
+                    color: 'black', 
+                    width: 2,
+                }
+            }
+            ];
+           
+            const layout4 = {
+                xaxis:{title:"country"},
+                yaxis:{title:"population"},
+                title:"country and their population",
+                pointBackgroundColor: ['red', 'green', 'blue', 'yellow', 'purple'],
+            }
+
+
+
+
+        function getinput() {
+            var input = prompt("Enter the chart you want to generate (e.g., bar):");
+           
+            if (input.toLowerCase() === 'bar') {
+                Plotly.newPlot("myplot", data1, layout1);
+            }
+            else if(input.toLowerCase() == "pie"){
+                Plotly.newPlot("myplot", data2, layout2);
+            }
+            else if (input.toLowerCase() === 'donut') {
+                Plotly.newPlot("myplot", data3, layout3);
+            }
+            else if (input.toLowerCase() === 'line') {
+                Plotly.newPlot("myplot", data4, layout4);
+            }
+            else {
+                alert("Sorry, the chart type you entered is not supported yet.");
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,51 @@
+.col{
+    column-count: 3;
+    line-height: 30pt;
+}
+h1{
+    text-align: center;
+    color:aliceblue;
+    background-image: linear-gradient(to right,violet,indigo,blue,green,yellow,orange,red);
+}
+/*#ball_manu{
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    position: absolute;
+    
+}*/
+.img{
+    background-image: url("dog2.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+i{
+    text-align: center;
+    font-size: x-large;
+}
+.animation{
+    background-image: url('./ball.jpeg');
+    width: 200px;
+    height: 200px;
+    rotate: 25deg;
+    animation-name: ball;
+    animation-direction: alternate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    background-size: cover;
+    position: relative;
+    background-color: lightgray; 
+    
+}
+@keyframes ball {
+    0% {
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(1000px);
+    }
+    100% {
+        transform: translateX(2000px);
+    }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>23BCE1223</title>
+        <script>
+            function calc(event) {
+                event.preventDefault();
+
+                var name = document.getElementById("name").value;
+                var apple = parseInt(document.getElementById("apple").value) || 0;
+                var banana = parseInt(document.getElementById("banana").value) || 0;
+                var avacado = parseInt(document.getElementById("avacado").value) || 0;
+                var price = 0;
+
+                if (document.getElementById("appleCheck").checked) {
+                    price += apple * 10;
+                }
+                if (document.getElementById("bananaCheck").checked) {
+                    price += banana * 5;
+                }
+                if (document.getElementById("avacadoCheck").checked) {
+                    price += avacado * 7;
+                }
+
+                var table = "<tr>RECIEPT</tr>";
+                table += "<tr>--------------------</tr><br>";
+                table += "<tr>Items</tr><br>";
+                table += "<tr>--------------------</tr><br>";
+                table += "<tr>Apple: " + apple + " @ $10 each = $" +(apple * 10) + "</tr><br>";
+                table += "<tr>Banana: " + banana + " @ $5 each = $"+ (banana * 5) + "</tr><br>";
+                table += "<tr>Avacado: " + avacado + " @ $7each = $" + (avacado * 7) + "</tr><br>";
+                table += "<tr>--------------------</tr><br>";
+                table+="<tr> total: </tr><br>";
+                table += "<tr>" +price+"</tr><br>";
+
+                document.getElementById("table").innerHTML = table;
+            }
+        </script>
+    </head>
+    <body>
+        <form style="background-color: rgb(210, 207, 207);" onsubmit="calc(event)">
+            <fieldset>
+                <label style="text-align: center;">Grocery Order Form</label><br>
+                <label>Customer name: </label><br>
+                <input type="text" id="name" required/><br><br>
+                <label>Phone no:</label><br>
+                <input type="text" required/><br><br>
+                <label>Email:</label><br>
+                <input type="email" required/><br><br>
+            </fieldset>
+            <fieldset>
+                <label>Products</label><br>
+                <input type="checkbox" id="appleCheck"/>
+                <label>Apple $10</label>
+                <input type="text" id="apple" /> kg<br>
+                <input type="checkbox" id="bananaCheck"/>
+                <label>Banana $5</label>
+                <input type="text" id="banana"/> kg<br>
+                <input type="checkbox" id="avacadoCheck"/>
+                <label>Avacado $7</label>
+                <input type="text" id="avacado"/> kg<br>
+            </fieldset>
+            <br>
+            <button type="submit">Calculate Price</button>
+
+            <table id="table">
+
+            </table>
+        </form>
+    </body>
+</html>

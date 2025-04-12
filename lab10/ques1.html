@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 1</title>
+        <script>
+            // Arrays to store the data
+            var ids = [1, 2, 3, 4, 5, 6, 7, 8];
+            var names = ["Alen", "Deena", "Diana", "Jack", "Jain", "Kelvin", "Louis", "Rex"];
+            var ages = [39, 47, 21, 54, 23, 61, 69, 49];
+
+            // Function to display the table
+            function displayTable() {
+                var table = "<tr><th>P-id</th><th>Name</th><th>Age</th></tr>";
+                for (var i = 0; i < ids.length; i++) {
+                    table += "<tr><td>" + ids[i] + "</td><td>" + names[i] + "</td><td>" + ages[i] + "</td></tr>";
+                }
+                document.getElementById("table").innerHTML = table;
+            }
+
+            // (i) Sort the data in descending order according to the patient’s age and display
+            function sortData() {
+                for (var i = 0; i < ages.length - 1; i++) {
+                    for (var j = i + 1; j < ages.length; j++) {
+                        if (ages[i] < ages[j]) {
+                            // Swap ages
+                            var tempAge = ages[i];
+                            ages[i] = ages[j];
+                            ages[j] = tempAge;
+
+                            // Swap corresponding ids and names to maintain the order
+                            var tempId = ids[i];
+                            ids[i] = ids[j];
+                            ids[j] = tempId;
+
+                            var tempName = names[i];
+                            names[i] = names[j];
+                            names[j] = tempName;
+                        }
+                    }
+                }
+                displayTable();
+            }
+
+            // (ii) Check whether a particular P-Id is presented in the list
+            function checkId() {
+                var input = parseInt(prompt("Enter P-id:"));
+                if (ids.includes(input)) {
+                    alert("The given P-id is present.");
+                } else {
+                    alert("The given P-id is not present.");
+                }
+            }
+
+            // (iii) Filter the patients by age range
+            function filterRange() {
+                var minAge = parseInt(prompt("Enter minimum age:"));
+                var maxAge = parseInt(prompt("Enter maximum age:"));
+                var table = "<tr><th>P-id</th><th>Name</th><th>Age</th></tr>";
+                var found = false;
+                for (var i = 0; i < ages.length; i++) {
+                    if (ages[i] >= minAge && ages[i] <= maxAge) {
+                        table += "<tr><td>" + ids[i] + "</td><td>" + names[i] + "</td><td>" + ages[i] + "</td></tr>";
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    alert("No patients found in this age range.");
+                }
+                document.getElementById("table").innerHTML = table;
+            }
+
+            // Initial display
+            window.onload = function() {
+                displayTable();
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Patient List</h2>
+        <table id="table" border="1px"></table>
+        <br>
+        <button onclick="sortData()">Sort by Age (Descending)</button>
+        <button onclick="checkId()">Check P-id</button>
+        <button onclick="filterRange()">Filter by Age Range</button>
+    </body>
+</html>

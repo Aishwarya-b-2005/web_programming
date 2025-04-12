@@ -1,0 +1,134 @@
+<!-- <html>
+    <head>
+        <script>
+            function startWatch(){
+
+            }
+            function stopWatch(){
+
+            }
+            function resetWatch(){
+
+            }
+
+            function calcAge(){
+                var today = new Date();
+                var todayparts = today.split("-");
+                var dob = document.getElementById("dob").value;
+                var age = document.getElementById("agecalcbtn");
+                var dobParts = dob.split("-");
+                age.textContent = today[2] - dobParts[2];   
+            }
+
+            function charcount(){
+                var disp = document.getElementById("disp");
+                let keyPressCount = 0;
+                inputField.onkeyup = () => {
+                keyPressCount++;
+                disp.value = keyPressCount;
+            }
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="watch">
+            SIMPLE STOP WATCH<br>
+            <input type="button" id="start" value="Start" onclick="startWatch()">
+            <input type="button" id="stop" value="Stop" onclick="stopWatch()">
+            <input type="button" id="reset" value="Reset" onclick="resetWatch()">
+        </div><br>
+
+        <div id="agecalc">
+            <input type="text" id="dob"/>
+            <input type="button" id="agecalcbtn" value="Calculate Age" onmouseover="calcAge()"/>
+        </div>
+
+        <div id="charcount">
+            <input type="text" id="input"/>
+            <input type="button" id="charcountbtn" value="Count Characters" onclick="charcount()"/>
+            <input type="text" id="disp"/>
+        </div>
+    </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        let interval;
+        let elapsed = 0;
+
+        // Stop Watch Functions
+        function startWatch() {
+            if (!interval) {
+                interval = setInterval(() => {
+                    elapsed++;
+                    document.getElementById("display").textContent = `Time: ${elapsed}s`;
+                }, 1000);
+            }
+        }
+
+        function stopWatch() {
+            clearInterval(interval);
+            interval = null;
+        }
+
+        function resetWatch() {
+            stopWatch();
+            elapsed = 0;
+            document.getElementById("display").textContent = "Time: 0s";
+        }
+
+        // Age Calculator
+        function calcAge() {
+            const dob = document.getElementById("dob").value;
+            const ageDisplay = document.getElementById("age");
+            if (dob) {
+                const dobDate = new Date(dob);
+                const today = new Date();
+                let age = today.getFullYear() - dobDate.getFullYear();
+                const monthDiff = today.getMonth() - dobDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+                    age--;
+                }
+                ageDisplay.value = age;
+            }
+        }
+
+        // Character Count
+        function charcount() {
+            const inputField = document.getElementById("input");
+            const disp = document.getElementById("disp");
+            disp.value = inputField.value.length;
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Stop Watch -->
+    <div id="watch">
+        <h2>SIMPLE STOP WATCH</h2>
+        <p id="display">Time: 0s</p>
+        <input type="button" id="start" value="Start" onclick="startWatch()">
+        <input type="button" id="stop" value="Stop" onclick="stopWatch()">
+        <input type="button" id="reset" value="Reset" onclick="resetWatch()">
+    </div><br>
+
+    <!-- Age Calculator -->
+    <div id="agecalc">
+        <h2>Age Calculator</h2>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob"/>
+        <input type="button" value="Calculate Age" onclick="calcAge()"/>
+        <input type="text" id="age" placeholder="Your age" readonly/>
+    </div><br>
+
+    <!-- Character Count -->
+    <div id="charcount">
+        <h2>Character Counter</h2>
+        <input type="text" id="input" placeholder="Type here..." onkeyup="charcount()"/>
+        <input type="text" id="disp" placeholder="Character count" readonly/>
+    </div>
+</body>
+</html>

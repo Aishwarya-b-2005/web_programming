@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #dis1 {
+                border: 10px solid brown;
+                font-weight: bold;
+                padding: 20px;
+                margin-top: 10px;
+                width: 100px;
+                height: 10px;
+                display: none;
+            }
+
+            #dis2 {
+                border: 2px solid black;
+                font-weight: bold;
+                padding: 10px;
+                margin-top: 10px;
+                width: 100px;
+                height: 10px;
+                display: none;
+            }
+        </style>
+        <script>
+            function display() {
+                name = document.getElementById('name').value;
+                regno = document.getElementById('regno').value;
+                outputDiv1 = document.getElementById('dis1');
+                outputDiv2 = document.getElementById('dis2');
+                outputDiv1.textContent = `${name}`;
+                outputDiv1.style.display = "block";
+                outputDiv2.innerHTML = `${regno}`;
+                outputDiv2.style.display = "block";
+            }
+        </script>
+    </head>
+
+    <body>
+        <h4>Enter your name:</h4>
+        <input type="text" id="name" name="name"><br><br>
+
+        <h4>Enter your reg no:</h4>
+        <input type="text" id="regno" name="regno"><br><br>
+
+        <h4>Click here to submit:</h4>
+        <button type="button" onclick="display()">DISPLAY</button>
+
+        <div id="dis1"></div>
+        <div id="dis2"></div>
+    </body>
+</html>

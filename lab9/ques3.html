@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <script>
+            function calculate(){
+                weight = parseInt(document.getElementById("weight").value);
+                height=  parseInt(document.getElementById("height").value);
+                bmi = weight/(height*height);
+
+
+                document.getElementById("bmi").value= bmi;
+                gender = document.getElementById("sel").value;
+
+
+                if(gender == "Male"){
+                    if(bmi<17.5){
+                        alert("Anorexia");
+                    }
+                    else if(bmi>17.501 && bmi<20.70){
+                        alert("Underweight");
+                    }
+                    else if(bmi>20.71 && bmi<26.40){
+                        alert("Ideal range");
+                    }
+                    else if(bmi>26.41 && bmi<27.80){
+                        alert("Marginally overweight range");
+                    }
+                    else if(bmi>27.81 && bmi<31.10){
+                        alert("Overweight range");
+                    }
+                    else{
+                        alert("Very Overweight or Obese");
+                    }
+                }
+
+
+                 else if(gender == "Female"){
+                    if(bmi<17.5){
+                        alert("Anorexia");
+                    }
+                    else if(bmi>17.51 && bmi<19.10){
+                        alert("Underweight");
+                    }
+                    else if(bmi>19.11 && bmi<25.80){
+                        alert("Ideal range");
+                    }
+                    else if(bmi>25.81 && bmi<27.30){
+                        alert("Marginally overweight range");
+                    }
+                    else if(bmi>27.31 && bmi<32.30){
+                        alert("Overweight range");
+                    }
+                    else{
+                        alert("Very Overweight or Obese");
+                    }
+                }
+
+
+            }
+        </script>
+    </head>
+
+
+    <body>
+        <form>
+            <fieldset>
+                <label for="select">BMI calculator</label>
+                <select id="sel">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </fieldset>
+
+
+            <fieldset>
+                <label>Enter your weight: </label><br>
+                (in pounds):
+                <input type="text" id="weight"/>
+            </fieldset>
+
+
+            <fieldset>
+                <label>Enter your height: </label><br>
+                (in feet):
+                <input type="text" id="height"/>
+            </fieldset>
+
+
+            <input type="button" value="calculate" onclick="calculate()"/>
+
+
+            <fieldset>
+                <label>YOUR BMI: </label><br>
+                <input type="text" id="bmi"/>
+            </fieldset>
+           
+        </form>
+    </body>
+</html>
+

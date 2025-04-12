@@ -1,0 +1,58 @@
+
+<html>
+<head>
+    <title>Temperature Categorization</title>
+</head>
+<body>
+    <p id="temp_cond"></p>
+
+    <table border="1" id="temp_table">
+        <tr>
+            <th>TEMPERATURE</th>
+            <th>CATEGORY</th>
+        </tr>
+    </table>
+</body>
+<script>
+    //window.onload = function() {
+        const temp = [55,62,68,74,59,45,41,58,60,67,65,78,82,88,91,92,90,93,87,80,78,79,72,68,61,59,55,65];
+
+        let hot = 0, pleasant = 0, cold = 0;
+
+        for(let i = 0; i < temp.length; i++) {
+            if(temp[i] > 85) {
+                hot++;
+            }
+            else if(temp[i] > 60 && temp[i] < 84) {
+                pleasant++;
+            }
+            else if(temp[i] < 60) {
+                cold++;
+            }
+        }
+
+        document.getElementById("temp_cond").innerHTML = 
+            hot + " days were hot<br>" +
+            pleasant + " days were pleasant<br>" +
+            cold + " days were cold";
+
+        let table = document.getElementById("temp_table");
+
+        for(let i = 0; i < temp.length; i++) {
+            let row = table.insertRow();
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+
+            cell1.innerHTML = temp[i];
+            if(temp[i] > 85) {
+                cell2.innerHTML = "Hot";
+            } else if(temp[i] > 60 && temp[i] < 84) {
+                cell2.innerHTML = "Pleasant";
+            } else {
+                cell2.innerHTML = "Cold";
+            }
+        }
+   // }
+</script>
+
+</html>

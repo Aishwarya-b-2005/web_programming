@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        window.onload = function() {
+            // Create a 3x3 dynamic table
+            var tab = document.getElementById("table");
+            for (var i = 0; i < 3; i++) {
+                var row = tab.insertRow();
+                for (var j = 0; j < 3; j++) {
+                    var cell = row.insertCell(); 
+                    cell.textContent = `Row ${i + 1}, Col ${j + 1}`; 
+                }
+            }
+
+            // Create a button dynamically
+            var button = document.createElement("button");
+            button.textContent = "Hover over me!";
+            button.style.backgroundColor = "red";
+            button.onmouseover = () => button.style.backgroundColor = "green";
+            button.onmouseout = () => button.style.backgroundColor = "red";
+            document.getElementById("button").appendChild(button);
+
+            /*var button = document.createElement("button");
+            button.textContent = "Hover over me!";
+            button.style.backgroundColor = "red";
+
+            // Adding event listeners
+            button.addEventListener("mouseover", () => {
+                button.style.backgroundColor = "green";
+            });
+
+            button.addEventListener("mouseout", () => {
+                button.style.backgroundColor = "red";
+            });
+
+            // Append the button to the container element
+            document.getElementById("button").appendChild(button);*/
+
+            // Create a textarea dynamically
+            var textarea = document.createElement("textarea");
+            textarea.placeholder = "Focus on me!";
+            textarea.style.backgroundColor = "green";
+            textarea.onfocus = () => textarea.style.backgroundColor = "yellow";
+            textarea.onblur = () => textarea.style.backgroundColor = "green";
+            textarea.onchange = () => alert("Hello! You changed the text.");
+            document.getElementById("textarea").appendChild(textarea);
+
+            const inputContainer = document.getElementById("inputContainer");
+            const inputField = document.createElement("input");
+            inputField.type = "text";
+            inputField.placeholder = "Type something here...";
+            inputContainer.appendChild(inputField);
+
+            // Create the second input field to display key press count
+            const countContainer = document.getElementById("countContainer");
+            const countField = document.createElement("input");
+            countField.type = "text";
+            countField.placeholder = "Key Press Count";
+            countField.readOnly = true; 
+            countContainer.appendChild(countField);
+
+            // Key press counter logic
+            let keyPressCount = 0;
+            inputField.onkeyup = () => {
+                keyPressCount++;
+                countField.value = keyPressCount;
+            }
+        };
+
+        // Function to add list items on button double click
+        function addItem() {
+            var item = document.createElement("li");
+            var list = document.getElementById("list");
+            var con = document.getElementById("t1").value;
+            if(con.trim() !== "") {
+                item.textContent = con;
+                list.appendChild(item);
+                document.getElementById("t1").value = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <table id="table" border="1"></table>
+    <br><br>
+    <div id="button"></div><br>
+    <div id="textarea"></div><br>
+    <div id="task3">
+        <h2>Add List Item on Double Click</h2>
+        <ul id="list">
+            <li>item 1</li>
+            <li>item 2</li>
+        </ul>
+        <input type="text" id="t1" placeholder="Enter list item..."/>
+        <button type="button" ondblclick="addItem()">DOUBLE CLICK HERE</button>
+    </div><br>
+
+    <div id="inputContainer"></div><br>
+    <div id="countContainer"></div>
+</body>
+</html>

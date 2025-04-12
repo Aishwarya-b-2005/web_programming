@@ -1,0 +1,181 @@
+<!-- <html>
+    <head>
+        <title>clock</title>
+    </head>
+
+    <body>
+        <canvas width="500" height="500">
+        </canvas>
+    </body>
+
+    <script>
+        var canvas = document.querySelector('canvas');
+        var ctx = canvas.getContext('2d');
+
+        //clock
+        ctx.beginPath();
+        ctx.arc(250, 250, 200, 0, 2 * Math.PI);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+
+        //lines
+        //12 o clock
+        ctx.beginPath();
+        ctx.moveTo(250,50);
+        ctx.lineTo(250,100);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        //6 o clock
+        ctx.beginPath();
+        ctx.moveTo(250,450);
+        ctx.lineTo(250,400);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        //3
+        ctx.beginPath();
+        ctx.moveTo(450,250);
+        ctx.lineTo(400,250);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        //9
+        ctx.beginPath();
+        ctx.moveTo(50,250);
+        ctx.lineTo(100,250);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        //centre circle
+        ctx.beginPath();
+        ctx.arc(250, 250, 10, 0, 2 * Math.PI);
+        ctx.fillStyle = 'black';
+        ctx.fill();
+
+        //hour
+        ctx.beginPath();
+        ctx.moveTo(250,250);
+        ctx.lineTo(350,150);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+        
+        //min
+        ctx.beginPath();
+        ctx.moveTo(250,250);
+        ctx.lineTo(300,250);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+
+        //sec
+        ctx.beginPath();
+        ctx.moveTo(250,150);
+        ctx.lineTo(250,250);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+
+
+    </script>
+</html> -->
+<html>
+    <head>
+        <title>Analog Clock</title>
+        <script>
+            function drawClock() {
+                var canvas = document.getElementById("clockCanvas");
+                var ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas for redrawing
+                
+                var now = new Date();
+                var hr = now.getHours();
+                var min = now.getMinutes();
+                var sec = now.getSeconds();
+                
+                var centerX = 250;
+                var centerY = 250;
+                var radius = 200;
+                
+                // Draw clock outline
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+                ctx.strokeStyle = "black";
+                ctx.lineWidth = 5;
+                ctx.stroke();
+                
+                // Draw center point
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 5, 0, 2 * Math.PI);
+                ctx.fillStyle = "black";
+                ctx.fill();
+
+                // Draw clock numbers
+                ctx.font = "20px Arial";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                for (let num = 1; num <= 12; num++) {
+                    let angle = (num * 30 - 90) * (Math.PI / 180);
+                    let x = centerX + Math.cos(angle) * 170;
+                    let y = centerY + Math.sin(angle) * 170;
+                    ctx.fillText(num, x, y);
+                }
+
+                // Draw tick marks
+                // for (let i = 0; i < 60; i++) {
+                //     let angle = (i * 6) * (Math.PI / 180);
+                //     let x1 = centerX + Math.cos(angle) * 190;
+                //     let y1 = centerY + Math.sin(angle) * 190;
+                //     let x2 = centerX + Math.cos(angle) * (i % 5 === 0 ? 170 : 180);
+                //     let y2 = centerY + Math.sin(angle) * (i % 5 === 0 ? 170 : 180);
+                //     ctx.beginPath();
+                //     ctx.moveTo(x1, y1);
+                //     ctx.lineTo(x2, y2);
+                //     ctx.strokeStyle = "black";
+                //     ctx.lineWidth = (i % 5 === 0) ? 3 : 1;
+                //     ctx.stroke();
+                // }
+
+                // Calculate angles
+                var secAngle = (sec * 6) * (Math.PI / 180);
+                var minAngle = (min * 6 + sec * 0.1) * (Math.PI / 180);
+                var hrAngle = (hr % 12 * 30 + min * 0.5) * (Math.PI / 180);
+
+                // Draw hour hand
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(centerX + Math.cos(hrAngle - Math.PI / 2) * 100, centerY + Math.sin(hrAngle - Math.PI / 2) * 100);
+                ctx.strokeStyle = "black";
+                ctx.lineWidth = 6;
+                ctx.stroke();
+
+                // Draw minute hand
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(centerX + Math.cos(minAngle - Math.PI / 2) * 140, centerY + Math.sin(minAngle - Math.PI / 2) * 140);
+                ctx.strokeStyle = "black";
+                ctx.lineWidth = 4;
+                ctx.stroke();
+
+                // Draw second hand
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(centerX + Math.cos(secAngle - Math.PI / 2) * 160, centerY + Math.sin(secAngle - Math.PI / 2) * 160);
+                ctx.strokeStyle = "red";
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+
+            setInterval(drawClock, 1000); // Update every second
+        </script>
+    </head>
+    <body>
+        <canvas id="clockCanvas" width="500" height="500"></canvas>
+    </body>
+</html>

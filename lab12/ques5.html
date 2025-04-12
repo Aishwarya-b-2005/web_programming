@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <style>
+            .box1{
+                position: absolute;
+                background-color: aqua;
+                top: 10px;
+                left: 10px;
+                width: 330px;
+                height: 330px;
+                z-index: 1;
+            }
+            .box2{
+                position: absolute;
+                background-color: palevioletred;
+                top: 40px;
+                left: 40px;
+                width: 330px;
+                height: 330px;
+                z-index: 2;
+            }
+            .box3{
+                position: absolute;
+                background-color: goldenrod;
+                top: 80px;
+                left: 80px;
+                width: 330px;
+                height: 330px;
+                z-index: 3;
+            }
+            .container{
+                width: 500px;
+                height: 500px;
+                border: 2px solid black;
+                position: relative;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="box box1"></div>
+            <div class="box box2"></div>
+            <div class="box box3"></div>
+        </div>
+        <br><br><br>
+        <div>
+            <h3>Enter z-index for box1: </h3>
+            <input type="text" id="textbox1"/><br>
+            <h3>Enter z-index for box2: </h3>
+            <input type="text" id="textbox2"/><br>
+            <h3>Enter z-index for box3: </h3>
+            <input type="text" id="textbox3"/><br>
+            <br><br>
+            <input type="button" value="change" onclick="change()"/>
+            <br><br>
+            <input type="button" value="print z-index" onclick="print()"/>
+        </div>
+
+
+        <script>
+            function change(){
+                var zbox1 = document.getElementById("textbox1").value;
+                var zbox2 = document.getElementById("textbox2").value;
+                var zbox3 = document.getElementById("textbox3").value;
+
+
+                // Set the z-index for each box
+                document.querySelector(".box1").style.zIndex = zbox1;
+                document.querySelector(".box2").style.zIndex = zbox2;
+                document.querySelector(".box3").style.zIndex = zbox3;
+            }
+            function print(){
+                alert("z-index of box1: " + document.querySelector(".box1").style.zIndex
+                + "\nz-index of box2: " + document.querySelector(".box2").style.zIndex
+                + "\nz-index of box3: " + document.querySelector(".box3").style.zIndex
+                );
+            }
+            // document.querySelectorAll(".box").forEach(box => {
+            //     box.addEventListener("mouseover", function(){
+            //         this.style.zIndex = "10";
+            //     });
+            //     box.addEventListener("mouseout", function(){
+            //         this.style.zIndex = "";
+            //     });
+            // });
+        </script>
+    </body>
+</html>
+
+

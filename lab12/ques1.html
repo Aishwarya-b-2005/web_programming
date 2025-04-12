@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas Example</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+
+        /* Boat Animation */
+        .boat {
+            position: absolute;
+            top: 350px; 
+            left: 700px; 
+            width: 40px;
+            height: 20px;
+            background-color: brown;
+            clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+            /*clip-path: polygon(0% 100%, 100% 100%, 50% 0%); bottem left,bottom right,top*/
+            animation: boatMove 3s infinite alternate ;
+        }
+
+        @keyframes boatMove {
+            0% {
+                transform: translateX(0px);
+            }
+            100% {
+                transform: translateX(80px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="600"></canvas>
+    <div class="boat"></div> <!-- Animated Boat -->
+
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        // Draw Sun
+        ctx.beginPath();
+        ctx.arc(750, 50, 40, 0, 2 * Math.PI);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+
+        // Sun Rays
+        ctx.strokeStyle = "yellow";
+        for (let i = 0; i < 12; i++) {
+            let angle = (i * Math.PI) / 6;
+            let x1 = 750 + Math.cos(angle) * 50;
+            let y1 = 50 + Math.sin(angle) * 50;
+            let x2 = 750 + Math.cos(angle) * 70;
+            let y2 = 50 + Math.sin(angle) * 70;
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+        }
+
+        // Draw House
+        ctx.fillStyle = "orange";
+        ctx.fillRect(20, 200, 200, 300);
+
+        // House Roof (Triangle)
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.moveTo(20, 200);
+        ctx.lineTo(120, 100);
+        ctx.lineTo(220, 200);
+        ctx.fill();
+
+        // Door
+        ctx.fillStyle = "brown";
+        ctx.fillRect(90, 400, 50, 100);
+
+        // Window
+        ctx.fillStyle = "blue";
+        ctx.fillRect(40, 250, 50, 50);
+
+        // Pond
+        ctx.beginPath();
+        ctx.fillStyle = "lightblue";
+        ctx.ellipse(500, 350, 140, 60, 0, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Rocks (Fixed only one set)
+        ctx.fillStyle = "gray";
+        ctx.beginPath();
+        ctx.arc(80, 520, 20, 0, 2 * Math.PI);
+        ctx.arc(110, 530, 15, 0, 2 * Math.PI);
+        //ctx.arc(200, 515, 25, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.fillStyle = "gray";
+        ctx.beginPath();
+        ctx.arc(580, 520, 20, 0, 2 * Math.PI);
+        ctx.arc(510, 530, 15, 0, 2 * Math.PI);
+        ctx.arc(540, 515, 25, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Bird
+        ctx.fillStyle = "yellow";
+        ctx.beginPath();
+        ctx.arc(700, 400, 25, 0, 2 * Math.PI); // Body
+        ctx.arc(730, 380, 15, 0, 2 * Math.PI); // Head
+        ctx.fill();
+
+        //bird eyes
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.arc(730, 375, 5, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Bird Beak
+        ctx.fillStyle = "orange";
+        ctx.beginPath();
+        ctx.moveTo(745, 380);
+        ctx.lineTo(765, 390);
+        ctx.lineTo(745, 395);
+        ctx.fill();
+
+        // Flower Stem
+        ctx.fillStyle = "green";
+        ctx.fillRect(847, 470, 6, 100);
+
+        // Flower Leaves
+        ctx.fillStyle = "green";
+        ctx.beginPath();
+        ctx.ellipse(835, 490, 15, 10, -30 * Math.PI / 180, 0, 2 * Math.PI);
+        ctx.ellipse(865, 490, 15, 10, 30 * Math.PI / 180, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Flower
+        ctx.fillStyle = "pink";
+        for (let i = 0; i < 6; i++) {
+            let angle = (i * Math.PI) / 3;
+            let x = 850 + Math.cos(angle) * 30;
+            let y = 450 + Math.sin(angle) * 30;
+            ctx.beginPath();
+            ctx.arc(x, y, 20, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+
+        // Flower Center
+        ctx.fillStyle = "yellow";
+        ctx.beginPath();
+        ctx.arc(850, 450, 10, 0, 2 * Math.PI);
+        ctx.fill();
+    </script>
+</body>
+</html>
